@@ -18,6 +18,10 @@ def teardown_storage(exc):
     storage.close()
 
 
+@app.errorhandler(404)
+def not_found(error):
+    """Returns a 404 status code response in JSON-format"""
+    return jsonify({"error": "Not found"}), 404
 
 
 

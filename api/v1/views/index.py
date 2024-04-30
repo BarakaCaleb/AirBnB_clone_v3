@@ -8,3 +8,20 @@ from api.v1.views import app_views
 def status():
     """Returns JSON object with the current server status."""
     return jsonify({"status": "OK"})
+
+
+
+@app_views.route("/stats")
+def stats():
+    """Gets the count of each object type.
+    
+    Returns:
+        A JSON Object with the number of objects by type."""
+    return jsonify({
+        "amenities": storage.count("Amenity"),
+        "cities": storage.count("City"),
+        places
+        reviews
+        states
+        users
+    })
