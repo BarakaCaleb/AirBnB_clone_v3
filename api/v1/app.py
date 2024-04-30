@@ -1,8 +1,13 @@
 #!usr/bin/env python3
 """The entry point for the AirBnB APIs"""
+from os import getenv
 from flask import flask
+from flask import jsonify
+from flask_cors import CORS
 from models import storage
 from api.v1.views import app_views
+
+
 
 app = Flask(__name__)
 
