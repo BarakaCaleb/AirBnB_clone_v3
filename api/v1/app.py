@@ -7,14 +7,15 @@ from flask_cors import CORS
 from models import storage
 from api.v1.views import app_views
 
-
-
 app = Flask(__name__)
+app.register_blueprint(app_views)
 
 
 
-
-
+@app.teardown_appcontext
+def teardown_storage(exc):
+    """This function closes session of the storage after each completed request"""
+    storage.close()
 
 
 
