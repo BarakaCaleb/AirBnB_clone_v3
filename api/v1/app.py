@@ -1,9 +1,9 @@
 #!usr/bin/env python3
 """The entry point for the AirBnB APIs"""
 from os import getenv
-from flask import flask
+from flask import Flask
 from flask import jsonify
-from flask_cors import CORS
+from flask import Blueprint
 from models import storage
 from api.v1.views import app_views
 
@@ -13,7 +13,7 @@ app.register_blueprint(app_views)
 
 
 @app.teardown_appcontext
-def teardown_storage(exc):
+def teardown_storage(self):
     """This function closes session of the storage after each completed request"""
     storage.close()
 
