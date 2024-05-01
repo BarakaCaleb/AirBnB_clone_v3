@@ -8,6 +8,7 @@ from models import storage
 from api.v1.views import app_views
 
 app = Flask(__name__)
+CORS(app, resource={r"/api/v1/*": {"origins": "*"}})
 app.register_blueprint(app_views)
 
 
@@ -16,6 +17,12 @@ app.register_blueprint(app_views)
 def teardown_storage(self):
     """This function closes session of the storage after each completed request"""
     storage.close()
+
+
+@app.errorhandler(404)
+def not_found(error):
+    """Returns a 404 error status code in JSON format"""
+    return jsonify({"error":"Not found"}),
 
 
 
