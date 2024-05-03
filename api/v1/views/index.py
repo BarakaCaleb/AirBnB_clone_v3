@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """This shows all the route status of the AirBnB API"""
 from flask import jsonify
 from models import storage
