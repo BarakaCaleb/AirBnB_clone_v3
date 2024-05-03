@@ -10,13 +10,10 @@ from models.state import State
 from models.user import User
 from api.v1.views import app_views
 
-
 @app_views.route("/status", methods=['GET'])
 def status():
     """Returns JSON object with the current server status."""
     return jsonify({"status": "OK"})
-
-
 
 @app_views.route("/stats", methods=['GET'], strict_slashes=False)
 def stats():
@@ -30,6 +27,5 @@ def stats():
         "places": storage.count("Place"),
         "reviews": storage.count("Review"),
         "states": storage.count("State"),
-        "users": storage.count("User")
-    
+        "users": storage.count("User")    
         })

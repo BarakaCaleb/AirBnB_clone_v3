@@ -11,19 +11,15 @@ app = Flask(__name__)
 #CORS(app, resource={r"/api/v1/*": {"origins": "*"}})
 app.register_blueprint(app_views)
 
-
-
 @app.teardown_appcontext
 def teardown_storage(self):
     """This function closes session of the storage after each completed request"""
     storage.close()
 
-
 @app.errorhandler(404)
 def not_found(error):
     """Returns a 404 error status code in JSON format"""
     return jsonify({"error":"Not found"}),
-
 
 
 if __name__ == '__main__':
