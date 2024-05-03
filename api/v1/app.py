@@ -1,4 +1,4 @@
-#!usr/bin/env python3
+#!/usr/bin/python3
 """The entry point for the AirBnB APIs"""
 from os import getenv
 from flask import Flask
@@ -8,7 +8,7 @@ from models import storage
 from api.v1.views import app_views
 
 app = Flask(__name__)
-CORS(app, resource={r"/api/v1/*": {"origins": "*"}})
+#CORS(app, resource={r"/api/v1/*": {"origins": "*"}})
 app.register_blueprint(app_views)
 
 
